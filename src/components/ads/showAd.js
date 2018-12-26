@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Carousel } from 'react-bootstrap';
  class showAd extends Component {
   render() {
     return (
@@ -16,15 +17,17 @@ import React, { Component } from 'react'
 					<p> <i className="glyphicon glyphicon-map-marker"></i><a href="/">state</a>, <a href="/">city</a>| Added at 06:55 pm, Ad ID: 987654321</p>
 					<div className="flexslider">
 						<ul className="slides">
-							<li data-thumb="/images/ss1.jpg">
-								<img src="/images/ss1.jpg" />
-							</li>
-							<li data-thumb="/images/ss2.jpg">
-								<img src="/images/ss2.jpg" />
-							</li>
-							<li data-thumb="/images/ss3.jpg">
-								<img src="/images/ss3.jpg" />
-							</li>
+                            <Carousel>
+                                <Carousel.Item>
+								    <img src="/images/ss1.jpg" />
+                                </Carousel.Item>
+                                <Carousel.Item>
+								    <img src="/images/ss2.jpg" />
+                                </Carousel.Item>
+                                <Carousel.Item>
+								    <img src="/images/ss3.jpg" />
+                                </Carousel.Item>
+                            </Carousel>
 						</ul>
 					</div>
 

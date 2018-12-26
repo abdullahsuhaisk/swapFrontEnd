@@ -8,6 +8,7 @@ import authentication from "./auth/authentication";
 import Register from './auth/signUp';
 import listAds from "./ads/listAds";
 import showAd from './ads/showAd';
+import postAd from './ads/postAd';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/auth/Register" component = {Register} />
             <Route exact path="/Ads/ListCategory/:id" component = {listAds} />
             <Route exact path="/Ads/showAd/:id" component = {showAd} />
+            <Route exact path="/Ads/postAd" component = { postAd } />
 
 
 
