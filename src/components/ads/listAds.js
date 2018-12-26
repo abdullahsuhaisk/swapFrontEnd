@@ -25,8 +25,8 @@ class listAds extends Component {
                     <input
                       type="text"
                       value="Product name..."
-                      onfocus="this.value = '';"
-                      onblur="if (this.value == '') {this.value = 'Product name...';}"
+                      onFocus="this.value = '';"
+                      onBlur="if (this.value == '') {this.value = 'Product name...';}"
                       required=""
                     />
                     <input type="submit" value=" " />

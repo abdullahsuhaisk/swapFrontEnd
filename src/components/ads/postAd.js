@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-
+import { connect } from 'react-redux';
 class postAd extends Component {
   render() {
+      console.log(this.state);
     return (
       <div className="submit-ad main-grid-border">
         <div className="container">
@@ -79,4 +80,11 @@ class postAd extends Component {
   }
 }
 
-export default postAd;
+const mapStateToProps = (state) => {
+    console.log(state);
+
+    return{
+        categories:state.categories
+    }
+}
+export default connect(mapStateToProps)(postAd);
