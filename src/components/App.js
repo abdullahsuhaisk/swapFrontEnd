@@ -6,6 +6,8 @@ import homePage from "./homePage";
 import Footer from './footer';
 import authentication from "./auth/authentication";
 import Register from './auth/signUp';
+import listAds from "./ads/listAds";
+import showAd from './ads/showAd';
 
 class App extends Component {
   render() {
@@ -17,6 +19,10 @@ class App extends Component {
             <Route exact path="/" component={homePage} />
             <Route exact path="/auth" component = {authentication} />
             <Route exact path="/auth/Register" component = {Register} />
+            <Route exact path="/Ads/ListCategory/:id" component = {listAds} />
+            <Route exact path="/Ads/showAd/:id" component = {showAd} />
+
+
 
             <Footer />
           
