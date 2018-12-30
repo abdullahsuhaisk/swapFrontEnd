@@ -1,8 +1,62 @@
-import React from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchCategories } from "../actions/categoryActions";
 
-const categoryMenu = () => {
-  return (
-        <div className="content">
+class categoryMenu extends Component {
+  componentDidMount() {
+    this.props.getCategories();
+  }
+
+  render() {
+    const { categories } = this.props;
+    console.log(categories);
+    return (
+      <div className="content">
+        <div className="categories">
+          <div className="container">
+            {categories &&
+              categories.map(cat => {
+                return (
+                  <div className="col-md-2 focus-grid" key={cat.name}>
+                    <Link to={'/CategorysAds/'+cat.id}>
+                      <div className="focus-border">
+                        <div className="focus-layout">
+                          <div className="focus-image">
+                            <i className={cat.pic_url} />
+                          </div>
+                          <h4 className="clrchg"> {cat.name}</h4>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+            <div className="clearfix" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+function mapStateToPros(state) {
+  return {
+    categories: state.categories.data
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    getCategories: () => dispatch(fetchCategories())
+  };
+};
+export default connect(
+  mapStateToPros,
+  mapDispatchToProps
+)(categoryMenu);
+
+/*
+ <div className="content">
 			<div className="categories">
 				<div className="container">
 					<div className="col-md-2 focus-grid">
@@ -129,7 +183,4 @@ const categoryMenu = () => {
 				</div>
             </div>
         </div>
-  )
-}
-
-export default categoryMenu
+*/

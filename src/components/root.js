@@ -6,10 +6,10 @@ import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 
-export default ({ children, initialState}) => {
+export default ({ children}) => {
     const store = createStore(
         reducers,
-        initialState,
+        {},
         applyMiddleware(thunk));
     return(
         <Provider store= {store} >

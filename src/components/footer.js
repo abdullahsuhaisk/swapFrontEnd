@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import { Link } from 'react-router-dom';
 const footer = () => {
   return (
     <footer>
@@ -14,21 +14,21 @@ const footer = () => {
 						<div className="col-md-3 footer-grid">
 							<h4 className="footer-head">Help</h4>
 							<ul>
-								<li><a href="howitworks.html">How it Works</a></li>						
-								<li><a href="sitemap.html">Sitemap</a></li>
-								<li><a href="faq.html">Faq</a></li>
-								<li><a href="feedback.html">Feedback</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="typography.html">Shortcodes</a></li>
+								<li><Link to={"/"}>How it Works</Link></li>						
+								<li><Link to={"/"}>Sitemap</Link></li>
+								<li><Link to={"/"}>Faq</Link></li>
+								<li><Link to={"/"}>Feedback</Link></li>
+								<li><Link to={"/"}>Contact</Link></li>
+								<li><Link to={"/"}>Shortcodes</Link></li>
 							</ul>
 						</div>
 						<div className="col-md-3 footer-grid">
 							<h4 className="footer-head">Information</h4>
 							<ul>
-								<li><a href="regions.html">Locations Map</a></li>	
-								<li><a href="terms.html">Terms of Use</a></li>
-								<li><a href="popular-search.html">Popular searches</a></li>	
-								<li><a href="privacy.html">Privacy Policy</a></li>	
+								<li><Link to={"/"}>Locations Map</Link></li>	
+								<li><Link to={"/"}>Terms of Use</Link></li>
+								<li><Link to={"/"}>Popular searches</Link></li>	
+								<li><Link to={"/"}>Privacy Policy</Link></li>	
 							</ul>
 						</div>
 						<div className="col-md-3 footer-grid">
@@ -47,7 +47,7 @@ const footer = () => {
 								</ul>	
 								<ul className="location">
 									<li><span className="glyphicon glyphicon-envelope"></span></li>
-									<li><a href="mailto:info@example.com">mail@example.com</a></li>
+									<li><Link to={"mailto:info@example.com"}>mail@example.com</Link></li>
 									<div className="clearfix"></div>
 								</ul>						
 							</address>
@@ -59,15 +59,15 @@ const footer = () => {
 			<div className="footer-bottom text-center">
 			<div className="container">
 				<div className="footer-logo">
-					<a href="index.html"><span>Ta</span>kaslaa</a>
+					<Link to={"/"}><span>Ta</span>kaslaa</Link>
 				</div>
 				<div className="footer-social-icons">
 					<ul>
-						<li><a className="facebook" href="/"><span>Facebook</span></a></li>
-						<li><a className="twitter" href="/"><span>Twitter</span></a></li>
-						<li><a className="flickr" href="/"><span>Flickr</span></a></li>
-						<li><a className="googleplus" href="/"><span>Google+</span></a></li>
-						<li><a className="dribbble" href="/"><span>Dribbble</span></a></li>
+						<li><Link className="facebook" to="/"><span>Facebook</span></Link></li>
+						<li><Link className="twitter" to="/"><span>Twitter</span></Link></li>
+						<li><Link className="flickr" to="/"><span>Flickr</span></Link></li>
+						<li><Link className="googleplus" to="/"><span>Google+</span></Link></li>
+						<li><Link className="dribbble" to="/"><span>Dribbble</span></Link></li>
 					</ul>
 				</div>
 				<div className="copyrights">

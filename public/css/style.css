@@ -247,6 +247,9 @@ span.active.uls-trigger {
 .focus-grid a {
 	text-decoration:none;
 }
+.focus-grid Link {
+	text-decoration:none;
+}
 .focus-grid {
     margin-top: 30px;
 }
