@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { compose } from 'redux';
 import { connect } from "react-redux";
 import { fetchState } from "./actions/index";
 import { Modal, Button } from "react-bootstrap";
@@ -17,7 +18,7 @@ class navbar extends Component {
   }
   componentDidMount() {
     this.props.fetchState();
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   handleHide() {
@@ -27,14 +28,15 @@ class navbar extends Component {
     this.setState({
       selectedLocaId: e.target.value
     });
-    console.log(this.state);
+    //console.log(this.state);
   };
   handleClick = e => {
-    this.props.history.push("/Ads/StatesCategory/" + this.state.selectedLocaId);
+    this.props.history.push("/Ads/ShowAdsWithState/" + this.state.selectedLocaId);
   };
   render() {
     const { location } = this.props;
-    console.log(this.state);
+    //console.log(location);
+    //console.log(this.state);
     return (
       <div className="header">
         <div className="container">
@@ -100,8 +102,8 @@ class navbar extends Component {
                     </div>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button onClick={this.handleClick}>sec</Button>
-                    <Button onClick={this.handleHide}>Close</Button>
+                    <Button onClick={this.handleClick}>Seç</Button>
+                    <Button onClick={this.handleHide}>Kapat</Button>
                   </Modal.Footer>
                 </Modal>
               </div>
@@ -113,7 +115,7 @@ class navbar extends Component {
   }
 }
 const mapStateToProps = (state, props) => {
-  console.log(props.match);
+  //console.log(props.match);
   return {
     location: state.loca.data,
     history: props.history
@@ -130,3 +132,10 @@ export default withRouter(
     mapDispatchToProps
   )(navbar)
 );
+// export default compose(
+//   connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+//   ),
+//   withRouter
+// )(navbar);
