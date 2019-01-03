@@ -1,59 +1,37 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
-import { fetchCategories } from "../actions/categoryActions";
 
-class categoryMenu extends Component {
-  componentDidMount() {
-    this.props.getCategories();
-  }
-
-  render() {
-    const { categories } = this.props;
-    console.log(categories);
-    return (
-      <div className="content">
-        <div className="categories">
-          <div className="container">
-            {categories &&
-              categories.map(cat => {
-                return (
-                  <div className="col-md-2 focus-grid" key={cat.name}>
-                    <Link to={'/CategorysAds/'+cat.id}>
-                      <div className="focus-border">
-                        <div className="focus-layout">
-                          <div className="focus-image">
-                            <i className={cat.pic_url} />
-                          </div>
-                          <h4 className="clrchg"> {cat.name}</h4>
+const categoryMenu = props => {
+  const { categories } = props;
+  return (
+    <div className="content">
+      <div className="categories">
+        <div className="container">
+          {categories &&
+            categories.map(cat => {
+              return (
+                <div className="col-md-2 focus-grid" key={cat.name}>
+                  <Link to={"/CategorysAds/" + cat.id}>
+                    <div className="focus-border">
+                      <div className="focus-layout">
+                        <div className="focus-image">
+                          <i className={cat.pic_url} />
                         </div>
+                        <h4 className="clrchg"> {cat.name}</h4>
                       </div>
-                    </Link>
-                  </div>
-                );
-              })}
-            <div className="clearfix" />
-          </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          <div className="clearfix" />
         </div>
       </div>
-    );
-  }
-}
-
-function mapStateToPros(state) {
-  return {
-    categories: state.categories.data
-  };
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    getCategories: () => dispatch(fetchCategories())
-  };
+    </div>
+  );
 };
-export default connect(
-  mapStateToPros,
-  mapDispatchToProps
-)(categoryMenu);
+
+export default categoryMenu;
 
 /*
  <div className="content">

@@ -6,15 +6,15 @@ import AdsListHeader from "./adsListHeader";
 import SearchAds from "./searchAds";
 import FeaturedAds from "./featuredAds";
 
-class stateAdsList extends Component {
+class categoryAdsList extends Component {
   componentDidMount() {
-    const stateId = this.props.match.params.StateId;
-    console.log(stateId); //Get Route value
-    this.props.stateAds(stateId);
+    const categoryId = this.props.match.params.categoryId;
+    console.log(categoryId); //Get Route value
+    this.props.categoriyAds(categoryId);
   }
   render() {
     console.log(this.props);
-    const Ads = this.props.advertise.data.Ads;
+    const Ads = this.props.advertise
     console.log(Ads);
     return (
       <div>
@@ -23,7 +23,7 @@ class stateAdsList extends Component {
             <AdsListHeader />
             <ol className="breadcrumb" style={{ marginBottom: "5px" }}>
               <li>
-                <a href="index.html">Home</a>
+                <Link to="/">Anasayfa</Link>
               </li>
               <li>
                 <a href="categories.html">Categories</a>
@@ -173,7 +173,7 @@ class stateAdsList extends Component {
                                 <p>Bekleyiniz...</p>
                               )}
                             </ul>
-                          </div>
+                            </div>
                         </div>
                       </div>
                       <div
@@ -219,10 +219,69 @@ class stateAdsList extends Component {
 }
 function mapStateToProps(state) {
   return {
-    advertise: state.advertise
+    advertise: state.advertise.Ads
   };
 }
 export default connect(
   mapStateToProps,
   actions
-)(stateAdsList);
+)(categoryAdsList);
+
+/*
+                            <ul className="list">
+                              <a href="single.html">
+                                <li>
+                                  <img src="/images/fr1.jpg" title="" alt="" />
+                                  <section className="list-left">
+                                    <h5 className="title">
+                                      There are many variations of passages of
+                                      Lorem Ipsum
+                                    </h5>
+                                    <span className="adprice">$290</span>
+                                    <p className="catpath">
+                                      Furniture » Sofa & Dining
+                                    </p>
+                                  </section>
+                                  <section className="list-right">
+                                    <span className="date">Today, 17:55</span>
+                                    <span className="cityname">City name</span>
+                                  </section>
+                                  <div className="clearfix" />
+                                </li>
+                              </a>
+                              {Ads ? (
+                                Ads.map(ad => {
+                                  return (
+                                    <Link to={'/Ads/showAd/'+ad.id} key={ad.id}>
+                                      <li>
+                                        <img
+                                          src="/images/fr2.jpg"
+                                          title=""
+                                          alt=""
+                                        />
+                                        <section className="list-left">
+                                          <h5 className="title">{ad.title}</h5>
+                                          <span className="adprice">$310</span>
+                                          <p className="catpath">
+                                            {ad.category_id}
+                                          </p>
+                                        </section>
+                                        <section className="list-right">
+                                          <span className="date">
+                                            {ad.created_at}
+                                          </span>
+                                          <span className="cityname">
+                                            City name
+                                          </span>
+                                        </section>
+                                        <div className="clearfix" />
+                                      </li>
+                                    </Link>
+                                  );
+                                })
+                              ) : (
+                                <p>Bekleyiniz...</p>
+                              )}
+                            </ul>
+                          
+*/

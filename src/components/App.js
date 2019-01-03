@@ -10,6 +10,7 @@ import listAds from "./ads/listAds";
 import showAd from './ads/showAd';
 import postAd from './ads/postAd';
 import statesAdsList from './ads/statesAdsList';
+import categoryAdsList from './ads/categoryAdsList';
 import stateandCityModal from '../stateAndCityModal';
 
 class App extends Component {
@@ -24,7 +25,7 @@ class App extends Component {
             <Route exact path="/Ads/ShowAdsWithState/:StateId" component = {statesAdsList} />
             <Route exact path="/Ads/StatesCategory/:CityId" component = {listAds} />
             <Route exact path="/Ads/showAd/:id" component = {showAd} />
-            <Route exact path="/CategorysAds/:categoryId" component = {listAds} />
+            <Route exact path="/CategorysAds/:categoryId" component = {categoryAdsList} />
             <Route exact path="/Ads/postAd" component = { postAd } />
             <Route exact path="/deneme" component = { stateandCityModal } />
             <Footer />
