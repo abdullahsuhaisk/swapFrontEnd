@@ -31,6 +31,7 @@ export class signUp extends Component {
     }
     
     handleSubmit = (e) => {
+		e.preventDefault();
         console.log(this.state);
 		//axios.post()
 		console.log(this.state.likedCategory);

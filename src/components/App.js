@@ -11,7 +11,7 @@ import showAd from './ads/showAd';
 import postAd from './ads/postAd';
 import statesAdsList from './ads/statesAdsList';
 import categoryAdsList from './ads/categoryAdsList';
-import stateandCityModal from '../stateAndCityModal';
+import deneme from '../deneme';
 
 class App extends Component {
   render() {
@@ -27,7 +27,7 @@ class App extends Component {
             <Route exact path="/Ads/showAd/:id" component = {showAd} />
             <Route exact path="/CategorysAds/:categoryId" component = {categoryAdsList} />
             <Route exact path="/Ads/postAd" component = { postAd } />
-            <Route exact path="/deneme" component = { stateandCityModal } />
+            <Route exact path="/deneme" component = { deneme } />
             <Footer />
           </div>
         </BrowserRouter>
