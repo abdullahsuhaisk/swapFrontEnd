@@ -9,3 +9,10 @@ export const ADD_AD_ERROR = "ADD_AD_ERROR";
 export const ADD_AD_SUCCES = "added succes";
 
 export const AUTH_USER = 'auth_user';
+export const SIGN_UP_USER_ERROR = 'SIGN_UP_USER_error';
+export const SIGN_UP_USER = 'SIGN_UP_USER';
+export const AUTH_ERROR= 'AUTH_ERROR';
+
+
+
+

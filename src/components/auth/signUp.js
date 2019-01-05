@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-export class signUp extends Component {
+import { connect } from 'react-redux';
+import { fetchCategories } from '../actions/categoryActions';
+import { signUp } from '../actions/authActions';
+import { fetchState } from '../actions';
+export class SignUp extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -24,10 +27,14 @@ export class signUp extends Component {
 				sports:true,
 				garden:true
 			},
-
+			state_id:"1",
+			city_id:"43",
+			liked_category_id:"1"
         }
     }
     componentDidMount = () => {
+		this.props.getCategories();
+		this.props.fetchState();
     }
     
     handleSubmit = (e) => {
@@ -35,6 +42,7 @@ export class signUp extends Component {
         console.log(this.state);
 		//axios.post()
 		console.log(this.state.likedCategory);
+		this.props.signUp(this.state);
 		
     }
     handleChange = (e) => {
@@ -54,6 +62,7 @@ export class signUp extends Component {
 
 	}
   render() {
+	  console.log(this.props)
     return (
             <div className="sign-in-wrapper">
 				<div className="graphs">
@@ -249,7 +258,19 @@ export class signUp extends Component {
     )
   }
 }
-
-export default signUp;
+const mapStateToProps = (state) => {
+	return{
+		categories:state.categories,
+		states:state.loca
+	}
+}
+function mapDispachToProps (dispatch) {
+	return({
+		fetchState: () => dispatch(fetchState()),
+		signUp: (user) => dispatch(signUp(user)),
+		getCategories: () => dispatch(fetchCategories())
+	})
+}
+export default connect(mapStateToProps, mapDispachToProps)(SignUp);
 
 
