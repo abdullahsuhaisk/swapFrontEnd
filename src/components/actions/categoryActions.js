@@ -8,16 +8,18 @@ import axios from "axios";
 //     payload: response.data
 //   });
 // };
-
+const uri = "http://127.0.0.1:8000/api/";
 
 export const fetchCategories = () => {
-    return (dispatch) => {
-       return axios.get("http://127.0.0.1:8000/api/category")
-       .then(res=>{
-            dispatch({
-            type: FETCH_CATEGORIES,
-            payload: res.data
-            })
-        }).catch(err=>console.log(err));
-    }
-}
+  return dispatch => {
+    return axios
+      .get(uri + "category")
+      .then(res => {
+        dispatch({
+          type: FETCH_CATEGORIES,
+          payload: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+};

@@ -39,14 +39,14 @@ export class SignUp extends Component {
     
     handleSubmit = (e) => {
 		e.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
 		//axios.post()
-		console.log(this.state.likedCategory);
+		//console.log(this.state.likedCategory);
 		this.props.signUp(this.state);
 		
     }
     handleChange = (e) => {
-		console.log(this.state);
+		//console.log(this.state);
         this.setState({
             [e.target.id] : (e.target.value)
         })
@@ -59,14 +59,32 @@ export class SignUp extends Component {
 			likedCategory
 		})
 		console.log(this.state.likedCategory);
-
 	}
+	renderAuth(message) {
+		if (message)
+		{
+			return(
+				<div>
+					<h1>
+						{message}
+					</h1>
+				</div>
+			)
+		}
+	}
+
   render() {
-	  console.log(this.props)
+	  console.log(this.props);
+	  const  message = this.props.auth.message;
+	  const auth =this.props.auth;
+	  console.log(message);
+	  console.log(auth);
+	  
     return (
             <div className="sign-in-wrapper">
 				<div className="graphs">
 					<div className="sign-up">
+						{this.renderAuth(message)}
 						<h1>Üyelik Oluştur</h1>
 						<p className="creating">Ücretsiz bir şekilde kullanmadığınız Eşyaları başka eşyalarla takaslamak için üye olunuz</p>
 
@@ -261,7 +279,8 @@ export class SignUp extends Component {
 const mapStateToProps = (state) => {
 	return{
 		categories:state.categories,
-		states:state.loca
+		states:state.loca,
+		auth:state.auth
 	}
 }
 function mapDispachToProps (dispatch) {

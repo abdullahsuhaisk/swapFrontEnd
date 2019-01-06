@@ -630,7 +630,7 @@ span.checkbox2 {
 .log-input .checkbox input:checked + i:after {
 	opacity: 1;
 }
-.sign-in-form input[type="submit"] {
+.sign-in-form button {
 	font-size: 17px;
     color: #fff;
     background: #01a185;
@@ -647,7 +647,7 @@ span.checkbox2 {
     cursor: pointer;
     margin: 0.5em 0 0 27.5%;
 }
-.sign-in-form input[type="submit"]:hover {
+.sign-in-form button:hover {
 	 background:#f3c500;
 	 transition: 0.5s all;
   -webkit-transition: 0.5s all;

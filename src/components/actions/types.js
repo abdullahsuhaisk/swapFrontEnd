@@ -8,10 +8,11 @@ export const FETCH_CATEGORYS_ADS = "fetch_categories_ads";
 export const ADD_AD_ERROR = "ADD_AD_ERROR";
 export const ADD_AD_SUCCES = "added succes";
 
-export const AUTH_USER = 'auth_user';
 export const SIGN_UP_USER_ERROR = 'SIGN_UP_USER_error';
 export const SIGN_UP_USER = 'SIGN_UP_USER';
-export const AUTH_ERROR= 'AUTH_ERROR';
+export const LOGIN_USER = 'auth_user';
+export const LOGIN_USER_ERROR= 'AUTH_ERROR';
+export const SIGN_OUT = "sign_out";
 
 
 

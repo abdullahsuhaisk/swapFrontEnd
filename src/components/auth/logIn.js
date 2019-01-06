@@ -1,75 +1,132 @@
 import React from "react";
+import axios from 'axios';
 import { Link } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import { login } from "../actions/authActions";
+class logIn extends React.Component {
 
-const logIn = () => {
-  return (
-    <div class="graphs">
-      <div class="sign-in-form">
-        <div class="sign-in-form-top">
-          <h1>Giriş</h1>
-        </div>
-        <div class="signin">
-          <div class="signin-rit">
-            <span class="checkbox1">
-              <label class="checkbox">
-                Şifremi Unuttum
-              </label>
-            </span>
-            <p>
-              <a href="/">Tıkla</a>
-            </p>
-            <div class="clearfix"> </div>
+  // componentDidMount = () => {
+  //   var headers = {
+  //     "Content-Type": "application/json",
+  //     "X-Requested-With": "XMLHttpRequest"
+  //   };
+  //   axios.post('http://localhost:8000/api/auth/login',this.state,{headers:headers}).then((res)=>
+  //   console.log(res.data)).catch(err=>console.log(err))
+  // }
+  onSubmit = formProps => {
+    this.props.login(formProps);
+  }
+  render() {
+    const { handleSubmit } =this.props;
+    console.log(this.props);
+    return (
+      <div className="graphs">
+        <div className="sign-in-form">
+          <div className="sign-in-form-top">
+            <h1>Giriş</h1>
           </div>
-          <form>
-            <div class="log-input">
-              <div class="log-input-left">
-                <input
-                  type="text"
-                  class="user"
-                  value="Your Email"
-                  onfocus="this.value = '';"
-                  onblur="if (this.value == '') {this.value = 'Your Email';}"
-                />
-              </div>
-              <span class="checkbox2">
-                <label class="checkbox">
-                  <input type="checkbox" name="checkbox" checked="" />
-                  <i> </i>
-                </label>
+          <div className="signin">
+            <div className="signin-rit">
+              <span className="checkbox1">
+                <label className="checkbox">Şifremi Unuttum</label>
               </span>
-              <div class="clearfix"> </div>
+              <p>
+                <a href="/">Tıkla</a>
+              </p>
+              <div className="clearfix"> </div>
             </div>
-            <div class="log-input">
-              <div class="log-input-left">
-                <input
-                  type="password"
-                  class="lock"
-                  value="password"
-                  onfocus="this.value = '';"
-                  onblur="if (this.value == '') {this.value = 'Email address:';}"
-                />
+            <form onSubmit={handleSubmit(this.onSubmit)}>
+              <div className="log-input">
+                <div className="log-input-left">
+                  <label htmlFor="firstName">Email</label>
+                  <Field name="email" component="input" type="text" />
+                </div>
+                <div className="clearfix"> </div>
               </div>
-              <span class="checkbox2">
-                <label class="checkbox">
-                  <input type="checkbox" name="checkbox" checked="" />
-                  <i> </i>
-                </label>
-              </span>
-              <div class="clearfix"> </div>
-            </div>
-            <input type="submit" value="Log in" />
-          </form>
-        </div>
-        <div class="new_people">
-          <h2>Yeni Üyelik</h2>
-          <p>
-            Eğer üye olmadıysanız, Sizde takaslamaya başlamak için üye olabilirsiniz
-          </p>
-          <Link to="/auth/Register">Üye Ol</Link>
+              <div className="log-input">
+                <div className="log-input-left">
+                  <label htmlFor="Password">Password</label>
+                  <Field name="password" component="input" type="password" />
+                </div>
+                <div className="clearfix"> </div>
+              </div>
+              <button> Login</button>
+            </form>
+          </div>
+          <div className="new_people">
+            <h2>Yeni Üyelik</h2>
+            <p>
+              Eğer üye olmadıysanız, Sizde takaslamaya başlamak için üye
+              olabilirsiniz
+            </p>
+            <Link to="/auth/Register">Üye Ol</Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+function mapStateToProps(state) {
+  return({
+    auth:state.auth
+  })
+}
 
-export default logIn;
+const mapDispatchToProps = dispatch => {
+  return {
+    login: formProps => dispatch(login(formProps))
+  };
+};
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  reduxForm({
+    form: "loginForm"
+  })
+)(logIn);
+
+/*
+ <form>
+              <div className="log-input">
+                <div className="log-input-left">
+                  <input
+                    type="text"
+                    className="user"
+                    value="Your Email"
+                    onfocus="this.value = '';"
+                    onblur="if (this.value == '') {this.value = 'Your Email';}"
+                  />
+                </div>
+                <span className="checkbox2">
+                  <label className="checkbox">
+                    <input type="checkbox" name="checkbox" checked="" />
+                    <i> </i>
+                  </label>
+                </span>
+                <div className="clearfix"> </div>
+              </div>
+              <div className="log-input">
+                <div className="log-input-left">
+                  <input
+                    type="password"
+                    className="lock"
+                    value="password"
+                    onfocus="this.value = '';"
+                    onblur="if (this.value == '') {this.value = 'Email address:';}"
+                  />
+                </div>
+                <span className="checkbox2">
+                  <label className="checkbox">
+                    <input type="checkbox" name="checkbox" checked="" />
+                    <i> </i>
+                  </label>
+                </span>
+                <div className="clearfix"> </div>
+              </div>
+              <input type="submit" value="Log in" />
+            </form>
+*/
