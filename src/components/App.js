@@ -22,6 +22,8 @@ class App extends Component {
             <Route exact path="/" component={homePage} />
             <Route exact path="/auth" component = {authentication} />
             <Route exact path="/auth/Register" component = {Register} />
+            <Route exact path="/auth/MyProfile" component = {homePage} />
+
             <Route exact path="/Ads/ShowAdsWithState/:StateId" component = {statesAdsList} />
             <Route exact path="/Ads/StatesCategory/:CityId" component = {listAds} />
             <Route exact path="/Ads/showAd/:id" component = {showAd} />

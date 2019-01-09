@@ -16,7 +16,7 @@ class homePage extends Component {
   }
   render() {
     const { categories } = this.props;
-    console.log(categories);
+    console.log(this.state);
     return (
       <div>
         <MainBanner />

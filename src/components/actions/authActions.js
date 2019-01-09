@@ -14,14 +14,16 @@ var headers = {
 
 
 
-export const login = (formProps) => async dispatch => {
+export const login = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post("http://localhost:8000/api/auth/login", formProps);
-    const token = response.data.token;
+    //const token = response.data.token;
+    console.log(response.data)
     dispatch({ type: LOGIN_USER, payload: response.data });
     // When authenticate is active so we use browser's storege
-    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("token", "Bearer " + response.data.access_token);
     //Dont forget the set up initial state in inex to localStoreg...
+    callback();
   } catch (e) {
     dispatch({ type: LOGIN_USER_ERROR, payload: "Email in use" });
   }

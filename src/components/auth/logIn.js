@@ -16,7 +16,9 @@ class logIn extends React.Component {
   //   console.log(res.data)).catch(err=>console.log(err))
   // }
   onSubmit = formProps => {
-    this.props.login(formProps);
+    this.props.login(formProps, () => {
+      this.props.history.push('/auth/MyProfile');
+    });
   }
   render() {
     const { handleSubmit } =this.props;
